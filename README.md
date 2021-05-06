@@ -1,5 +1,6 @@
 # SportApp
 Based on java-android, for final project of university
+
 **notice: all code is on master branch**
 
 运动健康APP简介
