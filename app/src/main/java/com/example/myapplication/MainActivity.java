@@ -28,7 +28,10 @@ public class MainActivity extends AppCompatActivity {
             child.setText("欢迎您，用户：" + LogAccount.account);
             main.addView(child, 0);
         }
-
+        else {
+            MySQLConnector mc = new MySQLConnector();
+            mc.start();
+        }
 
         Button daily_button = findViewById(R.id.daily);
         daily_button.setOnClickListener(new View.OnClickListener() {
@@ -93,5 +96,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }

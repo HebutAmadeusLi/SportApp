@@ -81,7 +81,19 @@ public class CacheTool {
     static public Vector<Url> urls = new Vector<Url>();
     static public int cnt = 1;
 
+    static public void clear() {
+        cnt = 1;
+        account.clear();
+        signed.clear();
+        friend.clear();
+        friendClub.clear();
+        urls.clear();
+    }
+
     static public void CreateAccount(String email, String password) {
+        if(account.containsKey(email)) {
+            return;
+        }
         account.put(email, password);
     }
 
@@ -99,15 +111,15 @@ public class CacheTool {
         return false;
     }
 
-    static public void book(String email) {
-        signed.add(new Book(email, (new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime())).toString()));
+    static public void book(String email, String text, String type) {
+        signed.add(new Book(email, (new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime())).toString(), text, type));
     }
 
-    static public Vector<String> bookedList(String email) {
-        Vector<String> ret = new Vector<String>();
+    static public Vector<Book> bookedList(String email) {
+        Vector<Book> ret = new Vector<Book>();
         for(int i = 0; i < signed.size(); ++i) {
             if(signed.elementAt(i).email.equals(email)) {
-                ret.add(signed.elementAt(i).date);
+                ret.add(signed.elementAt(i));
             }
         }
         return ret;
@@ -115,7 +127,7 @@ public class CacheTool {
 
     static public Vector<String> friendList(String email) {
         Vector<String> ret = new Vector<String>();
-        ret.add("admin@sport.com");
+        ret.add("admin");
         for(int i = 0; i < friend.size(); ++i) {
             if(friend.elementAt(i).from.equals(email)) {
                 ret.add(friend.elementAt(i).to);
@@ -125,7 +137,7 @@ public class CacheTool {
     }
 
     static public void addFriend(String email, String user) {
-        if(user.equals("admin@sport.com")) {
+        if(user.equals("admin")) {
             return;
         }
         for(int i = 0; i < friend.size(); ++i) {
@@ -137,7 +149,7 @@ public class CacheTool {
     }
 
     static public void deleteFriend(String email, String user) {
-        if(user.equals("admin@sport.com")) {
+        if(user.equals("admin")) {
             return;
         }
         for(int i = 0; i < friend.size(); ++i) {
@@ -149,7 +161,24 @@ public class CacheTool {
     }
 
     static public Vector<FriendClub> AllFriendClub() {
-        return friendClub;
+        String email = LogAccount.account;
+        if(email.equals("admin")) {
+            return friendClub;
+        }
+        Vector<FriendClub> ret = new Vector<FriendClub>();
+        for(int i = 0; i < friendClub.size(); ++i) {
+            if(friendClub.elementAt(i).email.equals("admin")) {
+                ret.add(friendClub.elementAt(i));
+                continue;
+            }
+            for(int j = 0; j < friend.size(); ++i) {
+                if(friend.elementAt(j).from.equals(email) && friend.elementAt(j).to.equals(friendClub.elementAt(i).email)) {
+                    ret.add(friendClub.elementAt(i));
+                    break;
+                }
+            }
+        }
+        return ret;
     }
 
     static public void addFriendClub(String email, String text) {
@@ -185,9 +214,13 @@ class Url {
 class Book {
     public String email;
     public String date;
-    Book(String _email, String _date) {
+    public String text;
+    public String type;
+    Book(String _email, String _date, String _text, String _type) {
         email = _email;
         date = _date;
+        text = _text;
+        type = _type;
     }
 }
 

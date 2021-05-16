@@ -33,7 +33,7 @@
         <Button android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/log"
-                android:text="登录">
+                android:text="登录/注册">
         </Button>
     </LinearLayout>
 
@@ -55,7 +55,7 @@
         <Button android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/friend"
-                android:text="好友管理">
+                android:text="关注用户管理">
         </Button>
     </LinearLayout>
 

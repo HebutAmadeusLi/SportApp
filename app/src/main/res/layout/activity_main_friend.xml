@@ -17,7 +17,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="添加好友:   ">
+                android:text="添加关注用户:   ">
         </TextView>
         <EditText
                 android:layout_width="200dp"
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="删除好友:   ">
+                android:text="删除关注用户:   ">
         </TextView>
         <EditText
                 android:layout_width="200dp"
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="好友列表：">
+                android:text="关注用户列表：">
         </TextView>
         <LinearLayout
                 android:layout_height="wrap_content"

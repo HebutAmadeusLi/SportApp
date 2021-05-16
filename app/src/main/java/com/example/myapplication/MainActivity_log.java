@@ -33,12 +33,23 @@ public class MainActivity_log extends AppCompatActivity {
                 EditText password = findViewById(R.id.password);
                 String password_text = password.getText().toString();
                 try {
-                    if(!CacheTool.AccountIsIn(email_text, password_text)) {
-                        CacheTool.CreateAccount(email_text, password_text);
+                    if(CacheTool.account.containsKey(email_text) && !CacheTool.account.get(email_text).equals(password_text)) {
+                        email.setText("");
+                        password.setText("");
+                        email.setHint("请输入正确用户名");
+                        password.setHint("请输入正确密码");
                     }
-                    LogAccount.login(email_text);
-                    Intent intent = new Intent(MainActivity_log.this, MainActivity.class);
-                    startActivity(intent);
+                    else if(!CacheTool.AccountIsIn(email_text, password_text)) {
+                        CacheTool.CreateAccount(email_text, password_text);
+                        LogAccount.login(email_text);
+                        Intent intent = new Intent(MainActivity_log.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                    else {
+                        LogAccount.login(email_text);
+                        Intent intent = new Intent(MainActivity_log.this, MainActivity.class);
+                        startActivity(intent);
+                    }
                 }
                 catch (Exception e) {
                     e.printStackTrace();

@@ -9,16 +9,4 @@
         android:background="@color/blue"
         android:orientation="vertical"
         android:id="@+id/book_main">
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="一篇让你看完终身受益的健身文章">
-    </TextView>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="https://www.sohu.com/a/242635443_99940595">
-    </TextView>
 </LinearLayout>
