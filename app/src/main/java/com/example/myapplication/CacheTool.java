@@ -8,73 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class CacheTool {
-    static public Map<String, String> account = new Map<String, String>() {
-        @Override
-        public int size() {
-            return 0;
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return false;
-        }
-
-        @Override
-        public boolean containsKey(@Nullable Object key) {
-            return false;
-        }
-
-        @Override
-        public boolean containsValue(@Nullable Object value) {
-            return false;
-        }
-
-        @Nullable
-        @Override
-        public String get(@Nullable Object key) {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public String put(String key, String value) {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public String remove(@Nullable Object key) {
-            return null;
-        }
-
-        @Override
-        public void putAll(@NonNull Map<? extends String, ? extends String> m) {
-
-        }
-
-        @Override
-        public void clear() {
-
-        }
-
-        @NonNull
-        @Override
-        public Set<String> keySet() {
-            return null;
-        }
-
-        @NonNull
-        @Override
-        public Collection<String> values() {
-            return null;
-        }
-
-        @NonNull
-        @Override
-        public Set<Entry<String, String>> entrySet() {
-            return null;
-        }
-    };
+    static public Map<String, String> account = new HashMap<String, String>();
     static public Vector<Book> signed = new Vector<Book>();
     static public Vector<Relationship> friend = new Vector<Relationship>();
     static public Vector<FriendClub> friendClub = new Vector<FriendClub>();
