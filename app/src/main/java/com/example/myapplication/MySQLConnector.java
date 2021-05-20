@@ -25,6 +25,7 @@ public class MySQLConnector implements Runnable {
     @Override
     public void run() {
         CacheTool.clear();
+        /*
         CacheTool.CreateAccount("admin", "admin");
         CacheTool.CreateAccount("test01", "test01");
         CacheTool.CreateAccount("test02", "test02");
@@ -34,7 +35,7 @@ public class MySQLConnector implements Runnable {
         CacheTool.book("admin", "健身房运动", "健身打卡");
         CacheTool.book("test01", "今天去游泳", "游泳打卡");
         CacheTool.addUrl("一篇让你看完终身受益的健身文章", "https://www.sohu.com/a/242635443_99940595");
-        /*
+        */
         Connection conn = null;
         Statement stmt = null;
         try{
@@ -128,6 +129,5 @@ public class MySQLConnector implements Runnable {
                 se.printStackTrace();
             }
         }
-        */
     }
 }
